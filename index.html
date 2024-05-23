@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="Website Icon" href="/img/logo.jpeg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLD INTEREST CALCULATOR</title>
+    <link rel="stylesheet" href="d.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <form>
+            <label>MORTAGE DATE:</label>
+            <input type="date" id="firstdate">
+            <br>
+            <label>RECEIVE DATE:</label>
+            <input type="date" id="seconddate">
+            <br>
+            <button type="button" onclick="x()">Find Difference</button>
+        </form>
+        <div id="daycount"></div>
+    </div>
+    <div class="wrappwr">
+        <form class="f">
+            <label class="l">ENTER PRINCIPEL AMOUNT:</label>
+            <input type="number" id="amount">
+            <br>
+            <label class="ll">ENTER THE DAY:</label>
+            <input type="number" id="day">
+            <br>
+            <label>ENTER INTEREST:</label>
+            <input type="number" id="interest">
+            <br>
+            <button class="b" type="button" onclick="i()">Find Interest</button>
+            <br>
+        </form>
+        <div id="inr"></div>
+    </div>
+    <script>
+        function x() {
+            const firstdate = document.getElementById('firstdate').value;
+            const seconddate = document.getElementById('seconddate').value;
+
+            const startTimestamp = new Date(firstdate).getTime();
+            const endTimestamp = new Date(seconddate).getTime();
+
+            const difference = endTimestamp - startTimestamp;
+
+            var differenceInDays = Math.round(difference / (1000 * 60 * 60 * 24));
+
+            var dayCountElement = document.getElementById('daycount');
+            dayCountElement.innerHTML = ` the difference between the date is ${differenceInDays} days.`;
+        }
+
+        function i() {
+            var a = (document.getElementById("amount").value);
+            var b = (document.getElementById("day").value);
+            var c = (document.getElementById("interest").value);
+
+            var d = Math.ceil(a * b / 365 * c / 100);
+            var e = document.getElementById('inr')
+            e.innerHTML = `the total amount is ${d}.`;
+        }
+    </script>
+</body>
+
+</html>
